@@ -119,6 +119,7 @@ class dec2ieee {
         int exponent = (decimal>firstOne)
             ? 126+decimal-firstOne
             : 127+decimal-firstOne;
+        if(exponent>255) return "0 11111111 00000000000000000000000";
         String exp = whole2bin(""+exponent);
         while(exp.length()<8) exp = "0" + exp;
         return (negative ? "1 " : "0 ") + exp + " " + data;
